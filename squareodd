@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <math.h>
+
+double mean(int n, int(*func)(int)) {
+    int i;
+    double sum = 0;
+    for (i = 1; i <= n; i++) {
+	sum += func(i);
+    }
+    return sum / n;
+}
+
+int odd(int n) {
+    return 2 * n - 1;
+}
+
+int even(int n) {
+    return 2 * n;
+}
+
+int square(int n) {
+    return n * n;
+}
+
+int cube(int n) {
+    return pow(n, 3);
+}
+
+int main() {
+    int n;
+    printf("Enter the value of N: ");
+    scanf("%d", &n);
+
+    printf("Mean of first %d odd numbers: %.2f\n", n, mean(n, odd));
+    printf("Mean of first %d even numbers: %.2f\n", n, mean(n, even));
+    printf("Mean of first %d square numbers: %.2f\n", n, mean(n, square));
+    printf("Mean of first %d cube numbers: %.2f\n", n, mean(n, cube));
+    return 0;
+}
